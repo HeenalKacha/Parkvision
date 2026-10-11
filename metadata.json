@@ -1,0 +1,7 @@
+{
+  "name": "ParkVision - AI Parking Space Occupancy Detector",
+  "description": "Smart computer vision system to detect parking spaces, classify car occupancy, and calculate vacancy rates from photos with interactive visual overlays.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
