@@ -172,17 +172,17 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
   };
 
   return (
-    <div className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-xl">
+    <div className="flex flex-col rounded-2xl border border-gray-200 bg-white p-4 shadow-xl">
       {/* Visualizer Header Bar */}
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3">
         {/* Filter controls */}
-        <div className="flex items-center gap-1 rounded-lg bg-slate-950/80 p-1 border border-slate-800">
+        <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1 border border-gray-200">
           <button
             onClick={() => setViewFilter('all')}
             className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
               viewFilter === 'all'
-                ? 'bg-slate-800 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             All ({spaces.length})
@@ -191,33 +191,33 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
             onClick={() => setViewFilter('vacant')}
             className={`flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
               viewFilter === 'vacant'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                : 'text-emerald-400/80 hover:text-emerald-300'
+                ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                : 'text-emerald-600/80 hover:text-emerald-700'
             }`}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             Vacant Only
           </button>
           <button
             onClick={() => setViewFilter('occupied')}
             className={`flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
               viewFilter === 'occupied'
-                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
-                : 'text-rose-400/80 hover:text-rose-300'
+                ? 'bg-rose-100 text-rose-700 border border-rose-200'
+                : 'text-rose-600/80 hover:text-rose-700'
             }`}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
             Occupied Only
           </button>
           <button
             onClick={() => setViewFilter('accessible')}
             className={`flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
               viewFilter === 'accessible'
-                ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30'
-                : 'text-sky-400/80 hover:text-sky-300'
+                ? 'bg-sky-100 text-sky-700 border border-sky-200'
+                : 'text-sky-600/80 hover:text-sky-700'
             }`}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-500"></span>
             Accessible
           </button>
         </div>
@@ -229,8 +229,8 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
             onClick={() => setIsAddingMode(!isAddingMode)}
             className={`flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
               isAddingMode
-                ? 'bg-emerald-500 text-slate-950 font-bold'
-                : 'border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-750'
+                ? 'bg-emerald-500 text-white font-bold'
+                : 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
             }`}
             title="Click and drag on the photo to map a missed parking space"
           >
@@ -243,8 +243,8 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
             onClick={() => setShowLabels(!showLabels)}
             className={`flex items-center gap-1 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors ${
               showLabels
-                ? 'border-slate-700 bg-slate-800 text-slate-200'
-                : 'border-slate-800 bg-slate-900 text-slate-500'
+                ? 'border-gray-200 bg-white text-gray-700'
+                : 'border-gray-300 bg-gray-50 text-gray-500'
             }`}
             title="Toggle parking space numbers and occupancy labels"
           >
@@ -253,22 +253,22 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
           </button>
 
           {/* Zoom controls */}
-          <div className="flex items-center rounded-lg border border-slate-800 bg-slate-950/80 p-0.5">
+          <div className="flex items-center rounded-lg border border-gray-200 bg-white p-0.5">
             <button
               onClick={handleZoomOut}
               disabled={zoom <= 0.8}
-              className="p-1 text-slate-400 hover:text-white disabled:opacity-40 transition-colors"
+              className="p-1 text-gray-500 hover:text-gray-900 disabled:opacity-40 transition-colors"
               title="Zoom out"
             >
               <ZoomOut className="h-3.5 w-3.5" />
             </button>
-            <span className="px-1 text-[11px] font-mono text-slate-400 w-9 text-center">
+            <span className="px-1 text-[11px] font-mono text-gray-600 w-9 text-center">
               {Math.round(zoom * 100)}%
             </span>
             <button
               onClick={handleZoomIn}
               disabled={zoom >= 3}
-              className="p-1 text-slate-400 hover:text-white disabled:opacity-40 transition-colors"
+              className="p-1 text-gray-500 hover:text-gray-900 disabled:opacity-40 transition-colors"
               title="Zoom in"
             >
               <ZoomIn className="h-3.5 w-3.5" />
@@ -276,7 +276,7 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
             {zoom !== 1 && (
               <button
                 onClick={handleResetZoom}
-                className="p-1 text-slate-400 hover:text-emerald-400 border-l border-slate-800"
+                className="p-1 text-gray-500 hover:text-emerald-600 border-l border-gray-200"
                 title="Reset Zoom"
               >
                 <RotateCcw className="h-3 w-3" />
@@ -288,11 +288,11 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
 
       {/* Adding Mode Banner */}
       {isAddingMode && (
-        <div className="mb-2 flex items-center justify-between rounded-lg bg-emerald-950/60 border border-emerald-500/40 px-3 py-1.5 text-xs text-emerald-300">
+        <div className="mb-2 flex items-center justify-between rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-xs text-emerald-700">
           <span>Click and drag across the parking bay to create a custom slot.</span>
           <button
             onClick={() => setIsAddingMode(false)}
-            className="text-emerald-400 hover:text-emerald-200 underline font-medium"
+            className="text-emerald-600 hover:text-emerald-800 underline font-medium"
           >
             Cancel
           </button>
@@ -302,7 +302,7 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
       {/* Interactive Canvas Viewport */}
       <div
         ref={containerRef}
-        className="relative w-full overflow-hidden rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-center min-h-[350px] max-h-[700px] select-none"
+        className="relative w-full overflow-hidden rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center min-h-[350px] max-h-[700px] select-none"
         style={{
           cursor: isAddingMode ? 'crosshair' : zoom > 1 ? 'grab' : 'default',
         }}
@@ -403,14 +403,14 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
                         width={Math.min(width - 8, 140)}
                         height={24}
                         rx={3}
-                        fill="rgba(15, 23, 42, 0.88)"
+                        fill="rgba(255, 255, 255, 0.95)"
                         stroke={config.stroke}
                         strokeWidth={1}
                       />
                       <text
                         x={6}
                         y={16}
-                        fill="#ffffff"
+                        fill="#1f2937"
                         fontSize={13}
                         fontWeight="600"
                         fontFamily="sans-serif"
@@ -453,24 +453,24 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
             if (!hovered) return null;
             const config = getStatusConfig(hovered.status);
             return (
-              <div className="absolute top-4 left-4 z-20 pointer-events-none rounded-xl border border-slate-700 bg-slate-900/95 backdrop-blur-md px-3 py-2 text-xs shadow-2xl">
+              <div className="absolute top-4 left-4 z-20 pointer-events-none rounded-xl border border-gray-200 bg-white/95 backdrop-blur-md px-3 py-2 text-xs shadow-2xl">
                 <div className="flex items-center gap-2">
                   <span
                     className="h-2 w-2 rounded-full"
                     style={{ backgroundColor: config.stroke }}
                   ></span>
-                  <span className="font-bold text-white">{hovered.slotNumber}</span>
-                  <span className="text-slate-400">·</span>
+                  <span className="font-bold text-gray-900">{hovered.slotNumber}</span>
+                  <span className="text-gray-400">·</span>
                   <span style={{ color: config.text }} className="font-medium">
                     {config.label}
                   </span>
                 </div>
                 {hovered.vehicleInfo && (
-                  <p className="mt-1 text-slate-300 font-mono text-[11px]">
+                  <p className="mt-1 text-gray-600 font-mono text-[11px]">
                     Vehicle: {hovered.vehicleInfo}
                   </p>
                 )}
-                <p className="text-[10px] text-slate-400">
+                <p className="text-[10px] text-gray-500">
                   Confidence: {Math.round(hovered.confidence * 100)}%
                 </p>
               </div>
@@ -481,7 +481,7 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
 
       {/* Selected Space Quick Inspector Tray */}
       {selectedSpace && (
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/80 bg-slate-950/90 px-4 py-2.5">
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-gray-200 bg-white px-4 py-2.5 shadow-sm">
           <div className="flex items-center gap-3">
             <div
               className="flex h-8 w-8 items-center justify-center rounded-lg border font-bold text-xs"
@@ -495,7 +495,7 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h4 className="text-xs font-bold text-white">{selectedSpace.slotNumber}</h4>
+                <h4 className="text-xs font-bold text-gray-900">{selectedSpace.slotNumber}</h4>
                 <span
                   className="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase"
                   style={{
@@ -506,7 +506,7 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
                   {getStatusConfig(selectedSpace.status).shortLabel}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-gray-600">
                 {selectedSpace.vehicleInfo
                   ? `Vehicle: ${selectedSpace.vehicleInfo}`
                   : 'Empty parking space ready for arrival'}
@@ -517,17 +517,17 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={toggleSelectedStatus}
-              className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-200 hover:bg-slate-700 transition-colors"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors"
             >
               <span>Toggle:</span>
-              <span className="font-semibold text-emerald-400">
+              <span className="font-semibold text-emerald-600">
                 {selectedSpace.status === 'vacant' ? 'Mark Occupied' : 'Mark Vacant'}
               </span>
             </button>
 
             <button
               onClick={() => onDeleteSpace(selectedSpace.id)}
-              className="flex items-center gap-1 rounded-lg border border-rose-500/20 bg-rose-500/10 p-1.5 text-rose-400 hover:bg-rose-500/20 transition-colors"
+              className="flex items-center gap-1 rounded-lg border border-rose-200 bg-rose-50 p-1.5 text-rose-600 hover:bg-rose-100 transition-colors"
               title="Remove this slot detection"
             >
               <Trash2 className="h-4 w-4" />
@@ -535,7 +535,7 @@ export const ParkingCanvas: React.FC<ParkingCanvasProps> = ({
 
             <button
               onClick={() => onSelectSpace(null)}
-              className="rounded-lg p-1.5 text-slate-400 hover:text-white"
+              className="rounded-lg p-1.5 text-gray-500 hover:text-gray-900"
             >
               <X className="h-4 w-4" />
             </button>

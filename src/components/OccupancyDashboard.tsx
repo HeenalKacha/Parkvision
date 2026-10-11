@@ -34,24 +34,24 @@ export const OccupancyDashboard: React.FC<OccupancyDashboardProps> = ({
   } = summary;
 
   // Compute status description and color
-  let statusColor = 'text-emerald-400';
-  let statusBg = 'bg-emerald-500/10 border-emerald-500/20';
+  let statusColor = 'text-emerald-600';
+  let statusBg = 'bg-emerald-50 border-emerald-200';
   let statusText = 'Optimal Availability';
   let recommendation = 'Plenty of vacant bays available for approaching vehicles.';
 
   if (occupancyRate >= 90) {
-    statusColor = 'text-rose-400';
-    statusBg = 'bg-rose-500/10 border-rose-500/20';
+    statusColor = 'text-rose-600';
+    statusBg = 'bg-rose-50 border-rose-200';
     statusText = 'Lot Full / High Congestion';
     recommendation = 'Near maximum capacity. Direct incoming drivers to alternate lots.';
   } else if (occupancyRate >= 70) {
-    statusColor = 'text-amber-400';
-    statusBg = 'bg-amber-500/10 border-amber-500/20';
+    statusColor = 'text-amber-600';
+    statusBg = 'bg-amber-50 border-amber-200';
     statusText = 'Heavy Occupancy';
     recommendation = 'Limited parking bays remaining in secondary sections.';
   } else if (occupancyRate >= 40) {
-    statusColor = 'text-teal-400';
-    statusBg = 'bg-teal-500/10 border-teal-500/20';
+    statusColor = 'text-teal-600';
+    statusBg = 'bg-teal-50 border-teal-200';
     statusText = 'Moderate Utilization';
     recommendation = 'Comfortable capacity with accessible spaces distributed.';
   }
@@ -68,22 +68,22 @@ export const OccupancyDashboard: React.FC<OccupancyDashboardProps> = ({
                 {statusText}
               </h3>
             </div>
-            <p className="text-xs text-slate-300 max-w-lg">{recommendation}</p>
+            <p className="text-xs text-gray-600 max-w-lg">{recommendation}</p>
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
             <div className="text-right">
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-white">
+              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-gray-900">
                 {occupancyRate}%
               </div>
-              <div className="text-[11px] text-slate-400">Total Utilization</div>
+              <div className="text-[11px] text-gray-500">Total Utilization</div>
             </div>
 
             {/* Circular Gauge */}
             <div className="relative h-14 w-14 flex items-center justify-center">
               <svg className="h-full w-full -rotate-90" viewBox="0 0 36 36">
                 <path
-                  className="text-slate-800"
+                  className="text-gray-200"
                   strokeWidth="3.5"
                   stroke="currentColor"
                   fill="none"
@@ -105,13 +105,13 @@ export const OccupancyDashboard: React.FC<OccupancyDashboardProps> = ({
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 />
               </svg>
-              <Car className="absolute h-5 w-5 text-slate-300" />
+              <Car className="absolute h-5 w-5 text-gray-400" />
             </div>
           </div>
         </div>
 
         {/* Linear progress bar */}
-        <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-slate-900 border border-slate-800">
+        <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-gray-200 border border-gray-300">
           <div
             className={`h-full transition-all duration-500 rounded-full ${
               occupancyRate >= 85
@@ -126,84 +126,84 @@ export const OccupancyDashboard: React.FC<OccupancyDashboardProps> = ({
       {/* Grid of Key Quantitative Metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Total Spaces */}
-        <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5">
-          <div className="flex items-center justify-between text-slate-400">
+        <div className="rounded-xl border border-gray-200 bg-white p-3.5 shadow-sm">
+          <div className="flex items-center justify-between text-gray-600">
             <span className="text-xs font-medium">Total Spaces</span>
-            <Car className="h-4 w-4 text-slate-400" />
+            <Car className="h-4 w-4 text-gray-500" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-white">{totalSpaces}</div>
-          <div className="mt-0.5 text-[11px] text-slate-500">Detected bays</div>
+          <div className="mt-2 text-2xl font-bold font-mono text-gray-900">{totalSpaces}</div>
+          <div className="mt-0.5 text-[11px] text-gray-500">Detected bays</div>
         </div>
 
         {/* Vacant Spaces (Highlighted) */}
-        <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-3.5 shadow-sm shadow-emerald-950/50">
-          <div className="flex items-center justify-between text-emerald-400">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3.5 shadow-sm">
+          <div className="flex items-center justify-between text-emerald-700">
             <span className="text-xs font-semibold">Vacant Bays</span>
             <CheckCircle2 className="h-4 w-4" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-emerald-300">
+          <div className="mt-2 text-2xl font-bold font-mono text-emerald-600">
             {vacantSpaces}
           </div>
-          <div className="mt-0.5 text-[11px] text-emerald-400/80 font-medium">
+          <div className="mt-0.5 text-[11px] text-emerald-600/80 font-medium">
             {totalSpaces > 0 ? Math.round((vacantSpaces / totalSpaces) * 100) : 0}% available
           </div>
         </div>
 
         {/* Occupied Spaces */}
-        <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-3.5">
-          <div className="flex items-center justify-between text-rose-400">
+        <div className="rounded-xl border border-rose-200 bg-rose-50 p-3.5 shadow-sm">
+          <div className="flex items-center justify-between text-rose-700">
             <span className="text-xs font-semibold">Occupied Bays</span>
             <AlertCircle className="h-4 w-4" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-rose-300">
+          <div className="mt-2 text-2xl font-bold font-mono text-rose-600">
             {occupiedSpaces}
           </div>
-          <div className="mt-0.5 text-[11px] text-rose-400/80 font-medium">
+          <div className="mt-0.5 text-[11px] text-rose-600/80 font-medium">
             {totalSpaces > 0 ? Math.round((occupiedSpaces / totalSpaces) * 100) : 0}% taken
           </div>
         </div>
 
         {/* Accessible / Reserved */}
-        <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5">
-          <div className="flex items-center justify-between text-sky-400">
+        <div className="rounded-xl border border-gray-200 bg-white p-3.5 shadow-sm">
+          <div className="flex items-center justify-between text-sky-600">
             <span className="text-xs font-medium">Accessible</span>
             <Accessibility className="h-4 w-4" />
           </div>
-          <div className="mt-2 text-2xl font-bold font-mono text-sky-300">
+          <div className="mt-2 text-2xl font-bold font-mono text-sky-600">
             {accessibleSpaces}
           </div>
-          <div className="mt-0.5 text-[11px] text-slate-500">
+          <div className="mt-0.5 text-[11px] text-gray-500">
             {reservedSpaces > 0 ? `+ ${reservedSpaces} reserved` : 'Designated bays'}
           </div>
         </div>
       </div>
 
       {/* Lot Intelligence & Environmental Context Card */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-3.5 text-xs">
-        <h4 className="font-semibold text-slate-300 mb-2">Parking Lot Environment</h4>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-slate-400">
+      <div className="rounded-xl border border-gray-200 bg-white p-3.5 text-xs shadow-sm">
+        <h4 className="font-semibold text-gray-900 mb-2">Parking Lot Environment</h4>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-gray-600">
           <div className="flex items-center gap-2">
-            <MapPin className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+            <MapPin className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
             <span className="truncate">
-              <strong className="text-slate-300">Type:</strong> {overview.lotType || 'Surface Lot'}
+              <strong className="text-gray-900">Type:</strong> {overview.lotType || 'Surface Lot'}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <Camera className="h-3.5 w-3.5 text-teal-400 shrink-0" />
+            <Camera className="h-3.5 w-3.5 text-teal-600 shrink-0" />
             <span className="truncate">
-              <strong className="text-slate-300">Angle:</strong> {overview.cameraAngle || 'Oblique'}
+              <strong className="text-gray-900">Angle:</strong> {overview.cameraAngle || 'Oblique'}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <CloudSun className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <CloudSun className="h-3.5 w-3.5 text-amber-600 shrink-0" />
             <span className="truncate">
-              <strong className="text-slate-300">Lighting:</strong> {overview.lightingWeather || 'Daylight'}
+              <strong className="text-gray-900">Lighting:</strong> {overview.lightingWeather || 'Daylight'}
             </span>
           </div>
         </div>
 
         {processingTimeMs && (
-          <div className="mt-2 flex items-center justify-between border-t border-slate-800/80 pt-2 text-[11px] text-slate-500">
+          <div className="mt-2 flex items-center justify-between border-t border-gray-200 pt-2 text-[11px] text-gray-500">
             <span>Detection Latency: {(processingTimeMs / 1000).toFixed(2)}s</span>
             <span>Vision Engine: Gemini 3.8 Flash</span>
           </div>

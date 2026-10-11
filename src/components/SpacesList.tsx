@@ -99,30 +99,30 @@ export const SpacesList: React.FC<SpacesListProps> = ({
   };
 
   return (
-    <div className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow-xl">
+    <div className="flex flex-col rounded-2xl border border-gray-200 bg-white p-4 shadow-xl">
       {/* Header and Search */}
-      <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+      <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-200 pb-3">
         <div>
-          <h3 className="text-sm font-bold text-white">Parking Spaces Directory</h3>
-          <p className="text-xs text-slate-400">
+          <h3 className="text-sm font-bold text-gray-900">Parking Spaces Directory</h3>
+          <p className="text-xs text-gray-500">
             Showing {sorted.length} of {spaces.length} detected stalls
           </p>
         </div>
 
         {/* Search input */}
         <div className="relative w-full sm:w-60">
-          <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-slate-400" />
+          <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-gray-400" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search slot or vehicle..."
-            className="w-full rounded-lg border border-slate-700 bg-slate-950/80 py-1.5 pl-8 pr-3 text-xs text-slate-200 placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-white py-1.5 pl-8 pr-3 text-xs text-gray-900 placeholder-gray-400 focus:border-emerald-500 focus:outline-none"
           />
           {searchTerm && (
             <button
               onClick={() => setSearchTerm('')}
-              className="absolute right-2.5 top-2.5 text-slate-400 hover:text-white"
+              className="absolute right-2.5 top-2.5 text-gray-400 hover:text-gray-900"
             >
               <X className="h-3 w-3" />
             </button>
@@ -137,8 +137,8 @@ export const SpacesList: React.FC<SpacesListProps> = ({
             onClick={() => setStatusFilter('all')}
             className={`rounded-md px-2 py-1 ${
               statusFilter === 'all'
-                ? 'bg-slate-800 text-white font-medium'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-gray-100 text-gray-900 font-medium'
+                : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             All
@@ -147,8 +147,8 @@ export const SpacesList: React.FC<SpacesListProps> = ({
             onClick={() => setStatusFilter('vacant')}
             className={`rounded-md px-2 py-1 ${
               statusFilter === 'vacant'
-                ? 'bg-emerald-500/20 text-emerald-300 font-medium'
-                : 'text-emerald-400/70 hover:text-emerald-300'
+                ? 'bg-emerald-100 text-emerald-700 font-medium'
+                : 'text-emerald-600/70 hover:text-emerald-700'
             }`}
           >
             Vacant
@@ -157,8 +157,8 @@ export const SpacesList: React.FC<SpacesListProps> = ({
             onClick={() => setStatusFilter('occupied')}
             className={`rounded-md px-2 py-1 ${
               statusFilter === 'occupied'
-                ? 'bg-rose-500/20 text-rose-300 font-medium'
-                : 'text-rose-400/70 hover:text-rose-300'
+                ? 'bg-rose-100 text-rose-700 font-medium'
+                : 'text-rose-600/70 hover:text-rose-700'
             }`}
           >
             Occupied
@@ -167,8 +167,8 @@ export const SpacesList: React.FC<SpacesListProps> = ({
             onClick={() => setStatusFilter('handicap_vacant')}
             className={`rounded-md px-2 py-1 ${
               statusFilter === 'handicap_vacant'
-                ? 'bg-sky-500/20 text-sky-300 font-medium'
-                : 'text-sky-400/70 hover:text-sky-300'
+                ? 'bg-sky-100 text-sky-700 font-medium'
+                : 'text-sky-600/70 hover:text-sky-700'
             }`}
           >
             Accessible
@@ -176,13 +176,13 @@ export const SpacesList: React.FC<SpacesListProps> = ({
         </div>
 
         {/* Sort selector */}
-        <div className="flex items-center gap-1 text-slate-400">
+        <div className="flex items-center gap-1 text-gray-500">
           <ArrowUpDown className="h-3 w-3" />
           <span className="text-[11px]">Sort:</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="rounded bg-slate-950 border border-slate-800 px-1.5 py-0.5 text-[11px] text-slate-300 focus:outline-none"
+            className="rounded bg-white border border-gray-200 px-1.5 py-0.5 text-[11px] text-gray-700 focus:outline-none"
           >
             <option value="number">Slot #</option>
             <option value="status">Status</option>
@@ -194,7 +194,7 @@ export const SpacesList: React.FC<SpacesListProps> = ({
       {/* List Container with Scroll */}
       <div className="max-h-[460px] overflow-y-auto space-y-2 pr-1 custom-scrollbar">
         {sorted.length === 0 ? (
-          <div className="py-8 text-center text-xs text-slate-500">
+          <div className="py-8 text-center text-xs text-gray-500">
             No parking spaces match the selected filter.
           </div>
         ) : (
@@ -209,8 +209,8 @@ export const SpacesList: React.FC<SpacesListProps> = ({
                 onClick={() => onSelectSpace(space.id)}
                 className={`group relative rounded-xl border p-2.5 transition-all cursor-pointer ${
                   isSelected
-                    ? 'border-emerald-500/80 bg-slate-800/90 shadow-md ring-1 ring-emerald-500/30'
-                    : 'border-slate-800 bg-slate-950/50 hover:border-slate-700 hover:bg-slate-900/60'
+                    ? 'border-emerald-500 bg-emerald-50 shadow-md ring-1 ring-emerald-500/30'
+                    : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'
                 }`}
               >
                 {isEditing ? (
@@ -224,26 +224,26 @@ export const SpacesList: React.FC<SpacesListProps> = ({
                         value={editSlotNumber}
                         onChange={(e) => setEditSlotNumber(e.target.value)}
                         placeholder="Slot Number (e.g. A-1)"
-                        className="w-1/2 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-white"
+                        className="w-1/2 rounded border border-gray-200 bg-white px-2 py-1 text-gray-900"
                       />
                       <input
                         type="text"
                         value={editVehicleInfo}
                         onChange={(e) => setEditVehicleInfo(e.target.value)}
                         placeholder="Vehicle info (or empty)"
-                        className="w-1/2 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-white"
+                        className="w-1/2 rounded border border-gray-200 bg-white px-2 py-1 text-gray-900"
                       />
                     </div>
                     <div className="flex justify-end gap-1.5">
                       <button
                         onClick={() => setEditingId(null)}
-                        className="rounded px-2 py-1 text-slate-400 hover:text-white"
+                        className="rounded px-2 py-1 text-gray-500 hover:text-gray-900"
                       >
                         Cancel
                       </button>
                       <button
                         onClick={() => handleSaveEdit(space)}
-                        className="rounded bg-emerald-500 px-2.5 py-1 font-semibold text-slate-950 hover:bg-emerald-400"
+                        className="rounded bg-emerald-500 px-2.5 py-1 font-semibold text-white hover:bg-emerald-600"
                       >
                         Save
                       </button>
@@ -266,7 +266,7 @@ export const SpacesList: React.FC<SpacesListProps> = ({
 
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="font-semibold text-white text-xs truncate">
+                          <span className="font-semibold text-gray-900 text-xs truncate">
                             {space.slotNumber}
                           </span>
                           <span
@@ -279,11 +279,11 @@ export const SpacesList: React.FC<SpacesListProps> = ({
                             {config.shortLabel}
                           </span>
                         </div>
-                        <p className="text-[11px] text-slate-400 truncate">
+                        <p className="text-[11px] text-gray-500 truncate">
                           {space.vehicleInfo ? (
-                            <span className="text-slate-300">{space.vehicleInfo}</span>
+                            <span className="text-gray-700">{space.vehicleInfo}</span>
                           ) : (
-                            <span className="text-emerald-400/80">Available Spot</span>
+                            <span className="text-emerald-600/80">Available Spot</span>
                           )}
                         </p>
                       </div>
@@ -298,8 +298,8 @@ export const SpacesList: React.FC<SpacesListProps> = ({
                         }}
                         className={`rounded px-2 py-1 text-[11px] font-medium transition-colors ${
                           space.status === 'vacant'
-                            ? 'bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 border border-rose-500/30'
-                            : 'bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/30'
+                            ? 'bg-rose-100 text-rose-700 hover:bg-rose-200 border border-rose-200'
+                            : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 border border-emerald-200'
                         }`}
                         title="Click to quickly toggle between vacant and occupied"
                       >
@@ -311,7 +311,7 @@ export const SpacesList: React.FC<SpacesListProps> = ({
                           e.stopPropagation();
                           handleStartEdit(space);
                         }}
-                        className="rounded p-1 text-slate-500 hover:text-slate-300 opacity-60 group-hover:opacity-100 transition-opacity"
+                        className="rounded p-1 text-gray-500 hover:text-gray-700 opacity-60 group-hover:opacity-100 transition-opacity"
                         title="Edit slot details"
                       >
                         <span className="text-[11px]">Edit</span>
@@ -322,7 +322,7 @@ export const SpacesList: React.FC<SpacesListProps> = ({
                           e.stopPropagation();
                           onDeleteSpace(space.id);
                         }}
-                        className="rounded p-1 text-slate-500 hover:text-rose-400 opacity-60 group-hover:opacity-100 transition-opacity"
+                        className="rounded p-1 text-gray-500 hover:text-rose-600 opacity-60 group-hover:opacity-100 transition-opacity"
                         title="Delete space"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
