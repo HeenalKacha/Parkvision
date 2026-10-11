@@ -247,7 +247,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 text-gray-900 flex flex-col font-sans selection:bg-emerald-500/30 selection:text-emerald-700">
       {/* Top Navigation */}
       <Navbar
         onNewUpload={handleReset}
@@ -353,10 +353,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-4 text-center text-xs text-slate-500">
+      <footer className="border-t border-gray-200 bg-white/80 py-4 text-center text-xs text-gray-500">
         <div className="mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p>© 2026 ParkVision · AI Computer Vision Parking Guidance System</p>
-          <div className="flex items-center gap-3 text-[11px] text-slate-400">
+          <div className="flex items-center gap-3 text-[11px] text-gray-400">
             <span>Normalized Bounding Box 2D</span>
             <span>·</span>
             <span>Gemini Vision</span>
